@@ -46,15 +46,14 @@ app.put('/repositories/:id', (request, response) => {
     return response.status(400).json({ error: 'Repository not found' });
   }
 
-  const repository = {
+  repositories[repositoryIndex] = {
+    ...repositories[repositoryIndex],
     title,
     url,
     techs,
   };
 
-  repositories[repositoryIndex] = repository;
-
-  return response.json(repository);
+  return response.json(repositories[repositoryIndex]);
 });
 
 app.delete('/repositories/:id', (request, response) => {
